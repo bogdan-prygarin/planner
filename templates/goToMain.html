@@ -16,7 +16,7 @@
     <script src="https://telegram.org/js/telegram-web-app.js?58"></script>
     <script>
         if (window.Telegram.WebApp.initDataUnsafe.user.id) {
-            window.location.href = "/" + `{$window.Telegram.WebApp.initDataUnsafe.user.id}`;
+            window.location.href = "/" + window.Telegram.WebApp.initDataUnsafe.user.id;
         } else {
             window.location.href = "/1/none";
         }

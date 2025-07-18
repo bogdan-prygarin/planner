@@ -209,6 +209,11 @@
             color: #fff;
         }
 
+        #h3 {
+            text-align: center;
+            color: rgba(0,0,0,0.6)
+        }
+
     </style>
 
 </head>
@@ -216,84 +221,7 @@
     <header><h1>Текущие</h1></header>
 
     <main>
-        <div class="task">
-            <div class="task-details">
-                <h2>Название задачи 1</h2>
-            </div>
-            <div class="task-time">
-                <span class="time">14:30</span>
-                <span class="timer">01:15:45</span>
-            </div>
-        </div>
-
-        <div class="task">
-            <div class="task-details">
-                <h2>Длинное название задачи, которое может переноситься на несколько строк</h2>
-            </div>
-            <div class="task-time">
-                <span class="time">15:00</span>
-                <span class="timer">00:45:10</span>
-            </div>
-        </div>
-
-        <div class="task">
-            <div class="task-details">
-                <h2>Задача 3</h2>
-            </div>
-            <div class="task-time">
-                <span class="time">16:15</span>
-                <span class="timer">00:30:05</span>
-            </div>
-        </div>
-
-        <div class="task">
-            <div class="task-details">
-                <h2>Задача 4</h2>
-            </div>
-            <div class="task-time">
-                <span class="time">17:00</span>
-                <span class="timer">00:10:20</span>
-            </div>
-        </div>
-        <div class="task">
-            <div class="task-details">
-                <h2>Задача 3</h2>
-            </div>
-            <div class="task-time">
-                <span class="time">16:15</span>
-                <span class="timer">00:30:05</span>
-            </div>
-        </div>
-
-        <div class="task">
-            <div class="task-details">
-                <h2>Задача 4</h2>
-            </div>
-            <div class="task-time">
-                <span class="time">17:00</span>
-                <span class="timer">00:10:20</span>
-            </div>
-        </div>
-        <div class="task">
-            <div class="task-details">
-                <h2>Задача 3</h2>
-            </div>
-            <div class="task-time">
-                <span class="time">16:15</span>
-                <span class="timer">00:30:05</span>
-            </div>
-        </div>
-
-        <div class="task">
-            <div class="task-details">
-                <h2>Задача 4</h2>
-            </div>
-            <div class="task-time">
-                <span class="time">17:00</span>
-                <span class="timer">00:10:20</span>
-            </div>
-        </div>
-        <!-- Добавьте столько задач, сколько нужно -->
+        &
     </main>
 
     <div id="bottom-gradient"></div>
@@ -307,16 +235,27 @@
 
     <div id="add-new-task-bg">
         <div id="add-new-task">
-            <input type="text" class="add-new-task-input" id="add-new-task-input-text" placeholder="Текст вашего задания"><br>
-            <p><b>Дата напоминания</b><input type="date" class="add-new-task-input" id="add-new-task-input-date"></p>
-            <p><b>Время напоминания</b><input type="time" class="add-new-task-input" id="add-new-task-input-time"></p>
+            <form action="/sumbit" method="post">
+                <input type="text" class="add-new-task-input" id="add-new-task-input-text" placeholder="Текст вашего задания", name="text"><br>
+                <p><b>Дата напоминания</b><input type="date" class="add-new-task-input" id="add-new-task-input-date", name="date"></p>
+                <p><b>Время напоминания</b><input type="time" class="add-new-task-input" id="add-new-task-input-time", name="time"></p>
             <button>Сохранить</button>
+            </form>
         </div>
     </div>
 
-
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         document.querySelector("#add-icon").addEventListener("click", function () {
+
+            addNewTask.innerHTML = `<div id="add-new-task">
+            <form action="/${window.Telegram.WebApp.initDataUnsafe.user.id}/sumbit" method="post">
+                <input type="text" class="add-new-task-input" id="add-new-task-input-text" placeholder="Текст вашего задания", name="text"><br>
+                <p><b>Дата напоминания</b><input type="date" class="add-new-task-input" id="add-new-task-input-date", name="date"></p>
+                <p><b>Время напоминания</b><input type="time" class="add-new-task-input" id="add-new-task-input-time", name="time"></p>
+            <button>Сохранить</button>
+            </form></div>`;
+            document.querySelector("#add-new-task-bg").appendChild(addNewTask);
             document.querySelector("#add-new-task-bg").style.display = "block";
         });
 
