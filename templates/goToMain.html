@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Загрузка...</h1>
+    <script src="https://telegram.org/js/telegram-web-app.js?58"></script>
+    <script>
+        if (window.Telegram.WebApp.initDataUnsafe.user.id) {
+            window.location.href = "/" + `{$window.Telegram.WebApp.initDataUnsafe.user.id}`;
+        } else {
+            window.location.href = "/1/none";
+        }
+    </script>
+</body>
+</html>
