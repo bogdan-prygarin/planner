@@ -234,42 +234,32 @@
     </div>
 
     <div id="add-new-task-bg">
-        <div id="add-new-task">
-            <form action="/sumbit" method="post">
-                <input type="text" class="add-new-task-input" id="add-new-task-input-text" placeholder="Текст вашего задания", name="text"><br>
-                <p><b>Дата напоминания</b><input type="date" class="add-new-task-input" id="add-new-task-input-date", name="date"></p>
-                <p><b>Время напоминания</b><input type="time" class="add-new-task-input" id="add-new-task-input-time", name="time"></p>
-            <button>Сохранить</button>
-            </form>
-        </div>
+        
     </div>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         document.querySelector("#add-icon").addEventListener("click", function () {
+    // 1. Создаем новый элемент div
+    const addNewTask = document.createElement("div");
 
-            addNewTask.innerHTML = `<div id="add-new-task">
-            <form action="/${window.Telegram.WebApp.initDataUnsafe.user.id}/sumbit" method="post">
-                <input type="text" class="add-new-task-input" id="add-new-task-input-text" placeholder="Текст вашего задания", name="text"><br>
-                <p><b>Дата напоминания</b><input type="date" class="add-new-task-input" id="add-new-task-input-date", name="date"></p>
-                <p><b>Время напоминания</b><input type="time" class="add-new-task-input" id="add-new-task-input-time", name="time"></p>
+    // 2. Устанавливаем ему id "add-new-task" (или можно оставить id внутри innerHTML)
+    addNewTask.id = "add-new-task"; // Это делает элемент #add-new-task
+    
+    // 3. Заполняем innerHTML
+    addNewTask.innerHTML = `
+        <form action="/${window.Telegram.WebApp.initDataUnsafe.user.id}/sumbit" method="post">
+            <input type="text" class="add-new-task-input" id="add-new-task-input-text" placeholder="Текст вашего задания" name="text"><br>
+            <p><b>Дата напоминания</b><input type="date" class="add-new-task-input" id="add-new-task-input-date" name="date"></p>
+            <p><b>Время напоминания</b><input type="time" class="add-new-task-input" id="add-new-task-input-time" name="time"></p>
             <button>Сохранить</button>
-            </form></div>`;
-            document.querySelector("#add-new-task-bg").appendChild(addNewTask);
-            document.querySelector("#add-new-task-bg").style.display = "block";
-        });
+        </form>`;
 
-        document.querySelector("#add-new-task-bg").addEventListener("click", function (event) {
-            if (event.target === this) {
-                this.style.display = "none";
-            }
-        });
-
-        document.querySelector("#add-new-task button").addEventListener("click", function (event) {
-            if (event.target === this) {
-                document.querySelector("#add-new-task-bg").style.display = "none";
-                alert("Напоминание сохранено!")
-            }
+    // 4. Добавляем созданный элемент в #add-new-task-bg
+    document.querySelector("#add-new-task-bg").appendChild(addNewTask);
+    
+    // 5. Показываем фон
+    document.querySelector("#add-new-task-bg").style.display = "block";
         });
     </script>
 

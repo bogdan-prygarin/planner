@@ -4,7 +4,7 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
 BOT_TOKEN = '8095977538:AAG12roxi2PzhQl8v3jvZI9x4V3qCdtMMZo'
 
 # 🌐 Ссылка на веб-приложение
-WEB_APP_URL = 'https://d92ed8afb0f7a5.lhr.life'  # замени на свою ссылку
+WEB_APP_URL = 'https://56bc7523508c21.lhr.life'  # замени на свою ссылку
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
